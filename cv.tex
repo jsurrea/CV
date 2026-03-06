@@ -1,0 +1,223 @@
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{geometry}
+\geometry{top=0.5in, bottom=0.5in, left=0.6in, right=0.6in}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+\usepackage[default]{lato}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}
+  {\vspace{-4pt}\scshape\raggedright\large\bfseries}
+  {}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+% Custom commands
+\newcommand{\cvItem}[1]{
+  \item\small{#1 \vspace{-2pt}}
+}
+
+\newcommand{\cvEntry}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \small #3 \\
+      \textit{\small#2} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\cvProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\cvListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\cvListEnd}{\end{itemize}}
+\newcommand{\cvItemListStart}{\begin{itemize}[itemsep=-2pt]}
+\newcommand{\cvItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+  \textbf{\Huge \scshape Juan Sebastian Urrea Lopez} \\ \vspace{4pt}
+  \small
+  \faEnvelope\ \href{mailto:jurrea5518@gmail.com}{jurrea5518@gmail.com} \quad
+  \faPhone\ (+57) 315-260-8311 \quad
+  \faLinkedin\ \href{https://www.linkedin.com/in/js-urrea/}{js-urrea} \quad
+  \faGithub\ \href{https://github.com/jsurrea}{jsurrea} \quad
+  \faGlobe\ \href{https://jsurrea.github.io/}{jsurrea.github.io} \quad
+  \faOrcid\ \href{https://orcid.org/0009-0006-9814-7765}{0009-0006-9814-7765}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+\cvListStart
+  \cvEntry
+    {\href{https://uniandes.edu.co/}{Universidad de los Andes}}
+    {M.Sc. + dual B.Sc. + Minor}
+    {4.69/5.0 — Magna Cum Laude}
+    {Jan 2019 -- Present}
+    \cvItemListStart
+      \cvItem{Dual B.Sc. in Systems \& Computing Engineering and Industrial Engineering — Magna Cum Laude (4.69/5.0), 2025.}
+      \cvItem{Minor in Biomedical Engineering (AI \& Computer Vision) — research under Prof. Pablo Arbeláez, Biomedical Computer Vision Group.}
+      \cvItem{M.Sc. in Systems \& Computing Engineering (in progress, 2026–). Coursework in reinforcement learning, advanced vision systems, and graduate-level ML.}
+      \cvItem{Full-tuition merit-based scholarship maintained for 6 years.}
+      \cvItem{11th best national score on Saber Pro exit exam (≈200,000 test-takers).}
+    \cvItemListEnd
+\cvListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\cvListStart
+  \cvEntry
+    {Truora Inc. {\footnotesize (YC W19)}}
+    {Software Engineer}
+    {Bogotá, Colombia}
+    {Aug 2025 -- Present}
+    \cvItemListStart
+      \cvItem{Architected serverless AWS integration (EventBridge, Lambda/Go, API Gateway) syncing HubSpot opportunity data with internal systems via idempotent processing, Redis caching, and Secrets Manager — delivering \$10K in AWS credits upon validation.}
+      \cvItem{Implemented webhook signature validation and secure API key rotation to guarantee end-to-end data integrity across systems.}
+    \cvItemListEnd
+  \cvEntry
+    {Caseware International}
+    {Software Developer}
+    {Bogotá, Colombia}
+    {Jan 2024 -- Aug 2025}
+    \cvItemListStart
+      \cvItem{Led zero-downtime migration from RDS to S3 Parquet for 100K+ users, owning a dual-layer validation system that continuously compared legacy and new implementations to guarantee identical responses.}
+      \cvItem{Built Java GraphQL client and New Relic dashboards for anomaly detection; contributed accessibility improvements (focus traps, screen readers) and ag-grid components.}
+    \cvItemListEnd
+  \cvEntry
+    {Multiaservi Ltda.}
+    {Application Developer}
+    {Bogotá, Colombia}
+    {Dec 2024 -- Jun 2025}
+    \cvItemListStart
+      \cvItem{Built offline-first Flutter mobile app with automatic data/image sync and a Nest.js backend (Auth0, RBAC) for a tax auditing platform serving low-connectivity rural areas of Colombia.}
+      \cvItem{Designed real-time location tracking dashboards optimized for low-spec Android devices.}
+    \cvItemListEnd
+  \cvEntry
+    {Cornell University — Department of Computer Science}
+    {Research Engineer (SURF Fellow)}
+    {Ithaca, NY, USA}
+    {Jun 2023 -- Aug 2023}
+    \cvItemListStart
+      \cvItem{Conducted 10-week research fellowship under Prof. Owolabi Legunsen studying inline test co-evolution across 30+ open-source Java projects; curated a dataset of 200+ statement-level breaking changes.}
+      \cvItem{Developed automated pipeline simulating project Git history, generating inline tests via the ExLi framework and recording pass/fail results at each commit.}
+    \cvItemListEnd
+  \cvEntry
+    {Kimberly-Clark Corporation}
+    {Data Scientist}
+    {Bogotá, Colombia}
+    {Jul 2022 -- Jan 2023}
+    \cvItemListStart
+      \cvItem{Applied NLP embeddings to deduplicate 30K client records in SQL Server; automated Power BI documentation with Python (100+ hours saved) and implemented version control for 32 reports.}
+      \cvItem{Built production monitoring pipeline for churn prediction model to detect data drift and ensure reliability.}
+    \cvItemListEnd
+\cvListEnd
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+\begin{enumerate}[leftmargin=*, label={[\arabic*]}, itemsep=-2pt]
+
+  \item \small J. S. Urrea-Lopez, C. Barreto-Reyes, M. Linares-Vásquez. \textit{ANTARES: A Software-Based Tool for Simulating Naval Radar Operations}. \textbf{IEEE International Conference on Military Technologies (ICMT)}, 2025.
+    \href{https://ieeexplore.ieee.org/document/11061265}{[PDF]} \href{https://github.com/TheSoftwareDesignLab/ANTARES}{[Code]} \href{https://thesoftwaredesignlab.github.io/ANTARES}{[Demo]}
+  \item \small E. S. Lozano Roa, J. S. Urrea López, I. D. Chacón Silva. \textit{Real-Time Face Mask Detection with SSD}. \textbf{IEEE 2nd International Congress of Biomedical Engineering and Bioengineering (CI-IB\&BI)}, 2021.
+    \href{https://ieeexplore.ieee.org/document/9626095}{[PDF]} \href{https://github.com/jsurrea/face-mask-detection-SSD}{[Code]}\end{enumerate}
+
+%-----------VOLUNTEERING-----------
+\section{Volunteering}
+\cvListStart
+  \cvEntry
+    {\href{https://ego4d-data.org/}{Ego4D (Meta AI Research)}}
+    {Data Contributor}
+    {}
+    {Jun 2021 -- Aug 2021}
+    \cvItemListStart
+      \cvItem{Contributed egocentric video footage to Ego4D, the world's largest publicly available first-person video dataset, supporting computer vision research on embodied AI and egocentric perception.}
+    \cvItemListEnd
+\cvListEnd
+
+%-----------HONORS \& AWARDS-----------
+\section{Honors \& Awards}
+\cvListStart
+  \cvEntry
+    {Saber Pro — 11th Best National Score}
+    {Ministry of Education of Colombia}
+    {}
+    {2024}
+    \cvItemListStart
+      \cvItem{Ranked 11th nationally on the Saber Pro exit examination among approximately 200,000 undergraduate test-takers, evaluating critical reading, quantitative reasoning, civic competence, scientific reasoning, and English proficiency.}
+    \cvItemListEnd
+  \cvEntry
+    {Full-Tuition Merit-Based Scholarship}
+    {Universidad de los Andes}
+    {}
+    {2018}
+    \cvItemListStart
+      \cvItem{Received and maintained full-tuition merit scholarship throughout a 6-year dual-degree program based on exceptional academic achievement.}
+    \cvItemListEnd
+  \cvEntry
+    {Hackathon \& Competition Wins (6+)}
+    {Various}
+    {}
+    {2022}
+    \cvItemListStart
+      \cvItem{3× Codefest Ad Astra winner (2022, 2023, 2024); 1st Place Extreme Programming Competition (2022); Sabana Hack 2022; DataJam for Transparency 2022. Domains: full-stack development, competitive programming, and data science.}
+    \cvItemListEnd
+\cvListEnd
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt]
+  \item \small NVIDIA Deep Learning Institute $\cdot$ Building LLM Applications with Prompt Engineering (Apr 2025)
+  \item \small NVIDIA Deep Learning Institute $\cdot$ Building Transformer-Based NLP Applications (May 2024)
+  \item \small NVIDIA Deep Learning Institute $\cdot$ Fundamentals of Deep Learning (Apr 2024)
+  \item \small Correlation One (3\% acceptance rate) $\cdot$ Data Science for All: Colombia 5.0 — Honors (Sep 2021)
+  \item \small University of Michigan / Coursera $\cdot$ Applied Data Science with Python Specialization (5 courses) (Jan 2021)
+  \item \small DeepLearning.AI / Coursera $\cdot$ Deep Learning Specialization (5 courses) (Jul 2020)
+\end{itemize}
+
+%-----------SELECTED PROJECTS-----------
+\section{Selected Projects}
+\cvListStart
+  \cvProjectHeading
+    {\textbf{Open Source Uniandes} $|$ \emph{TypeScript, Next.js, Tailwind CSS} $|$ \href{https://github.com/Open-Source-Uniandes}{\underline{GitHub}}}
+    {Dec 2022 -- Dec 2023}
+    \cvItemListStart
+      \cvItem{8K+ peak weekly users; official university endorsement and API integration}
+      \cvItem{27 GitHub stars on Mi-Horario; 11 on Aula-Finder}
+    \cvItemListEnd
+  \cvProjectHeading
+    {\textbf{LatamGPT — Document Extraction Pipeline} $|$ \emph{Python, Apache Tika, GCP, ETL, NLP} $|$ \href{https://github.com/jsurrea/LLM-Latino}{\underline{GitHub}}}
+    {Jun 2024 -- Aug 2024}
+    \cvItemListStart
+      \cvItem{50B parameter model; 33 institutional partners across 12 countries}
+    \cvItemListEnd
+  \cvProjectHeading
+    {\textbf{Paquito} $|$ \emph{Python, React, FastAPI, NLP, Vector Search} $|$ \href{https://github.com/jsurrea/Paquito}{\underline{GitHub}}}
+    {Jan 2022 -- Dec 2022}
+    \cvItemListStart
+      \cvItem{Winner — DataJam for Transparency Colombia 2022}
+    \cvItemListEnd
+\cvListEnd
+
+%-------------------------------------------
+\end{document}

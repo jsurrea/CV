@@ -1,0 +1,254 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "meta": {
+    "version": "v1.0.0",
+    "lastModified": "2026-03-05"
+  },
+  "basics": {
+    "name": "Juan Sebastian Urrea Lopez",
+    "label": "Software Engineer & AI Researcher",
+    "email": "jurrea5518@gmail.com",
+    "phone": "(+57) 315-260-8311",
+    "url": "https://jsurrea.github.io/",
+    "summary": "Software engineer and AI researcher with dual degrees (Magna Cum Laude, 4.69/5.0 GPA) and an ongoing Master's from Universidad de los Andes. Author of 2 IEEE publications in computer vision and simulation. Production experience building cloud-native systems for 100K+ users at YC-backed companies using AWS, Go, and Flutter. Founder of open-source tools serving 8K+ university students. Research experience at Cornell University and Universidad de los Andes. Strong background in deep learning, distributed systems, and full-stack development.",
+    "location": {
+      "city": "Bogotá",
+      "countryCode": "CO",
+      "region": "Colombia"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "js-urrea",
+        "url": "https://www.linkedin.com/in/js-urrea/"
+      },
+      {
+        "network": "GitHub",
+        "username": "jsurrea",
+        "url": "https://github.com/jsurrea"
+      },
+      {
+        "network": "ORCID",
+        "username": "0009-0006-9814-7765",
+        "url": "https://orcid.org/0009-0006-9814-7765"
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Universidad de los Andes",
+      "url": "https://uniandes.edu.co/",
+      "area": "Systems & Computing Engineering (M.Sc.) | Systems & Computing Engineering + Industrial Engineering (B.Sc. × 2) | Minor in Biomedical Engineering — AI & Computer Vision",
+      "studyType": "M.Sc. + dual B.Sc. + Minor",
+      "startDate": "2019-01-19",
+      "endDate": "present",
+      "score": "4.69/5.0 — Magna Cum Laude",
+      "courses": [],
+      "highlights": [
+        "Dual B.Sc. in Systems & Computing Engineering and Industrial Engineering — Magna Cum Laude (4.69/5.0), 2025.",
+        "Minor in Biomedical Engineering (AI & Computer Vision) — research under Prof. Pablo Arbeláez, Biomedical Computer Vision Group.",
+        "M.Sc. in Systems & Computing Engineering (in progress, 2026–). Coursework in reinforcement learning, advanced vision systems, and graduate-level ML.",
+        "Full-tuition merit-based scholarship maintained for 6 years.",
+        "11th best national score on Saber Pro exit exam (≈200,000 test-takers)."
+      ],
+      "gpa_numeric": 4.69,
+      "gpa_scale": 5.0,
+      "honor": "Magna Cum Laude"
+    }
+  ],
+  "work": [
+    {
+      "name": "Truora Inc.",
+      "position": "Software Engineer",
+      "url": "https://www.truora.com/",
+      "startDate": "2025-08-31",
+      "endDate": "present",
+      "location": "Bogotá, Colombia",
+      "note": "YC W19",
+      "highlights": [
+        "Architected serverless AWS integration (EventBridge, Lambda/Go, API Gateway) syncing HubSpot opportunity data with internal systems via idempotent processing, Redis caching, and Secrets Manager — delivering $10K in AWS credits upon validation.",
+        "Implemented webhook signature validation and secure API key rotation to guarantee end-to-end data integrity across systems."
+      ]
+    },
+    {
+      "name": "Caseware International",
+      "position": "Software Developer",
+      "url": "https://www.caseware.com/",
+      "startDate": "2024-01-14",
+      "endDate": "2025-08-30",
+      "location": "Bogotá, Colombia",
+      "highlights": [
+        "Led zero-downtime migration from RDS to S3 Parquet for 100K+ users, owning a dual-layer validation system that continuously compared legacy and new implementations to guarantee identical responses.",
+        "Built Java GraphQL client and New Relic dashboards for anomaly detection; contributed accessibility improvements (focus traps, screen readers) and ag-grid components."
+      ]
+    },
+    {
+      "name": "Multiaservi Ltda.",
+      "position": "Application Developer",
+      "url": "https://multiaservi.com.co/",
+      "startDate": "2024-12-01",
+      "endDate": "2025-06-29",
+      "location": "Bogotá, Colombia",
+      "highlights": [
+        "Built offline-first Flutter mobile app with automatic data/image sync and a Nest.js backend (Auth0, RBAC) for a tax auditing platform serving low-connectivity rural areas of Colombia.",
+        "Designed real-time location tracking dashboards optimized for low-spec Android devices."
+      ]
+    },
+    {
+      "name": "Cornell University — Department of Computer Science",
+      "position": "Research Engineer (SURF Fellow)",
+      "url": "https://www.cs.cornell.edu/~legunsen/",
+      "startDate": "2023-06-05",
+      "endDate": "2023-08-05",
+      "location": "Ithaca, NY, USA",
+      "highlights": [
+        "Conducted 10-week research fellowship under Prof. Owolabi Legunsen studying inline test co-evolution across 30+ open-source Java projects; curated a dataset of 200+ statement-level breaking changes.",
+        "Developed automated pipeline simulating project Git history, generating inline tests via the ExLi framework and recording pass/fail results at each commit."
+      ]
+    },
+    {
+      "name": "Kimberly-Clark Corporation",
+      "position": "Data Scientist",
+      "url": "https://www.kimberly-clark.com/",
+      "startDate": "2022-07-04",
+      "endDate": "2023-01-04",
+      "location": "Bogotá, Colombia",
+      "highlights": [
+        "Applied NLP embeddings to deduplicate 30K client records in SQL Server; automated Power BI documentation with Python (100+ hours saved) and implemented version control for 32 reports.",
+        "Built production monitoring pipeline for churn prediction model to detect data drift and ensure reliability."
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "name": "ANTARES: A Software-Based Tool for Simulating Naval Radar Operations",
+      "publisher": "IEEE International Conference on Military Technologies (ICMT)",
+      "releaseDate": "2025",
+      "url": "https://ieeexplore.ieee.org/document/11061265",
+      "summary": "Open-source naval radar simulator built in Rust supporting real-time TCP integration, standalone GUI operation, and extensible vessel movement strategies. Validated with 12 Colombian Navy officers and enlisted personnel.",
+      "authors": "J. S. Urrea-Lopez, C. Barreto-Reyes, M. Linares-Vásquez",
+      "codeUrl": "https://github.com/TheSoftwareDesignLab/ANTARES",
+      "demoUrl": "https://thesoftwaredesignlab.github.io/ANTARES"
+    },
+    {
+      "name": "Real-Time Face Mask Detection with SSD",
+      "publisher": "IEEE 2nd International Congress of Biomedical Engineering and Bioengineering (CI-IB&BI)",
+      "releaseDate": "2021",
+      "url": "https://ieeexplore.ieee.org/document/9626095",
+      "summary": "Trained SSD architecture on 853-image dataset for 3-class real-time face mask detection. Fine-tuned from Pascal VOC pretrained weights, achieving 66.7% mAP on the test set.",
+      "authors": "E. S. Lozano Roa, J. S. Urrea López, I. D. Chacón Silva",
+      "codeUrl": "https://github.com/jsurrea/face-mask-detection-SSD"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Open Source Uniandes",
+      "description": "Founded and led open-source student organization at Universidad de los Andes, shipping two production tools: Mi-Horario-Uniandes (course scheduler with real-time notifications, peak 8K visits/2 weeks, official university API integration) and Aula-Finder (real-time campus classroom finder). Both deployed at institutional scale.",
+      "highlights": [
+        "8K+ peak weekly users; official university endorsement and API integration",
+        "27 GitHub stars on Mi-Horario; 11 on Aula-Finder"
+      ],
+      "keywords": ["TypeScript", "Next.js", "Tailwind CSS"],
+      "startDate": "2022-12-20",
+      "endDate": "2023-12-18",
+      "url": "https://github.com/Open-Source-Uniandes",
+      "roles": ["Founder", "Lead Developer"],
+      "type": "Open Source"
+    },
+    {
+      "name": "LatamGPT — Document Extraction Pipeline",
+      "description": "Designed and implemented the data pipeline for LatamGPT, the first collaborative Latin American LLM (50B parameters, 33+ institutional partners across 12 countries). Extracted and de-identified thousands of academic PDFs from Universidad de los Andes' institutional repository using Apache Tika; managed processed datasets in GCP for LLM training.",
+      "highlights": [
+        "50B parameter model; 33 institutional partners across 12 countries"
+      ],
+      "keywords": ["Python", "Apache Tika", "GCP", "ETL", "NLP"],
+      "startDate": "2024-06-03",
+      "endDate": "2024-08-10",
+      "url": "https://github.com/jsurrea/LLM-Latino",
+      "roles": ["Data Engineer"],
+      "type": "Research"
+    },
+    {
+      "name": "Paquito",
+      "description": "NLP-powered search engine (React + FastAPI) improving Colombia's public contracting database (SECOP II) using word embeddings for semantic matching instead of exact keyword search. Winner of DataJam for Transparency Colombia 2022.",
+      "highlights": [
+        "Winner — DataJam for Transparency Colombia 2022"
+      ],
+      "keywords": ["Python", "React", "FastAPI", "NLP", "Vector Search"],
+      "startDate": "2022-01-01",
+      "endDate": "2022-12-31",
+      "url": "https://github.com/jsurrea/Paquito",
+      "roles": ["Full-Stack Developer"],
+      "type": "Competition"
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Ego4D (Meta AI Research)",
+      "position": "Data Contributor",
+      "url": "https://ego4d-data.org/",
+      "startDate": "2021-06-07",
+      "endDate": "2021-08-07",
+      "summary": "Contributed egocentric video footage to Ego4D, the world's largest publicly available first-person video dataset, supporting computer vision research on embodied AI and egocentric perception.",
+      "highlights": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Saber Pro — 11th Best National Score",
+      "date": "2024-12-04",
+      "awarder": "Ministry of Education of Colombia",
+      "summary": "Ranked 11th nationally on the Saber Pro exit examination among approximately 200,000 undergraduate test-takers, evaluating critical reading, quantitative reasoning, civic competence, scientific reasoning, and English proficiency."
+    },
+    {
+      "title": "Full-Tuition Merit-Based Scholarship",
+      "date": "2018-12-20",
+      "awarder": "Universidad de los Andes",
+      "summary": "Received and maintained full-tuition merit scholarship throughout a 6-year dual-degree program based on exceptional academic achievement."
+    },
+    {
+      "title": "Hackathon & Competition Wins (6+)",
+      "date": "2022-01-01",
+      "awarder": "Various",
+      "summary": "3× Codefest Ad Astra winner (2022, 2023, 2024); 1st Place Extreme Programming Competition (2022); Sabana Hack 2022; DataJam for Transparency 2022. Domains: full-stack development, competitive programming, and data science."
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Building LLM Applications with Prompt Engineering",
+      "date": "2025-04-01",
+      "issuer": "NVIDIA Deep Learning Institute",
+      "url": ""
+    },
+    {
+      "name": "Building Transformer-Based NLP Applications",
+      "date": "2024-05-11",
+      "issuer": "NVIDIA Deep Learning Institute",
+      "url": ""
+    },
+    {
+      "name": "Fundamentals of Deep Learning",
+      "date": "2024-04-20",
+      "issuer": "NVIDIA Deep Learning Institute",
+      "url": ""
+    },
+    {
+      "name": "Data Science for All: Colombia 5.0 — Honors",
+      "date": "2021-09-10",
+      "issuer": "Correlation One (3% acceptance rate)",
+      "url": ""
+    },
+    {
+      "name": "Applied Data Science with Python Specialization (5 courses)",
+      "date": "2021-01-08",
+      "issuer": "University of Michigan / Coursera",
+      "url": ""
+    },
+    {
+      "name": "Deep Learning Specialization (5 courses)",
+      "date": "2020-07-09",
+      "issuer": "DeepLearning.AI / Coursera",
+      "url": ""
+    }
+  ]
+}

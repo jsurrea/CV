@@ -1,27 +1,21 @@
-name: Build & Release CV
+name: Build CV
 
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Release tag (e.g. 2025.03.05 or v1.2.0)'
+      version_tag:
+        description: 'Release tag (e.g. v2026.03.05). Defaults to current date.'
         required: false
-        default: ''
-      prerelease:
-        description: 'Mark as pre-release?'
-        required: false
-        default: 'false'
-        type: choice
-        options: ['true', 'false']
+        type: string
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write    # needed to create releases
+      contents: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -32,49 +26,33 @@ jobs:
       - name: Install Python dependencies
         run: pip install jinja2
 
-      - name: Determine release version
-        id: version
+      - name: Install TeX Live
         run: |
-          if [ -n "${{ github.event.inputs.version }}" ]; then
-            echo "tag=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-extra \
+            texlive-fonts-recommended latexmk
+
+      - name: Generate cv.tex from data.json
+        run: python generate.py --tex-only
+
+      - name: Compile PDF
+        run: |
+          latexmk -pdf -interaction=nonstopmode cv.tex
+          latexmk -c
+
+      - name: Determine release tag
+        id: tag
+        run: |
+          if [ -n "${{ github.event.inputs.version_tag }}" ]; then
+            echo "tag=${{ github.event.inputs.version_tag }}" >> $GITHUB_OUTPUT
           else
-            echo "tag=$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
+            echo "tag=v$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
           fi
 
-      - name: Generate resume.tex from JSON
-        run: python src/generate.py
-
-      - name: Compile LaTeX → PDF
-        uses: xu-cheng/latex-action@v4
-        with:
-          root_file: resume.tex
-          latexmk_use_lualatex: false    # pdflatex is fastest; switch to true if using XeLaTeX fonts
-
-      - name: Rename output artifacts
-        run: |
-          cp resume.pdf juan_sebastian_urrea_resume.pdf
-          cp data/profile.json profile.json
-
-      - name: Create GitHub Release
+      - name: Create GitHub Release and upload PDF
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.version.outputs.tag }}
-          name: "CV — ${{ steps.version.outputs.tag }}"
-          body: |
-            ## Juan Sebastián Urrea López — CV
-
-            **Version:** `${{ steps.version.outputs.tag }}`
-            **Built:** ${{ github.run_id }}
-
-            ### Assets
-            - `juan_sebastian_urrea_resume.pdf` — compiled CV (ATS-friendly PDF)
-            - `profile.json` — structured data (for portfolio and other integrations)
-
-            ### Direct Links
-            - PDF: https://github.com/${{ github.repository }}/releases/latest/download/juan_sebastian_urrea_resume.pdf
-            - JSON: https://github.com/${{ github.repository }}/releases/latest/download/profile.json
-          prerelease: ${{ github.event.inputs.prerelease == 'true' }}
-          files: |
-            juan_sebastian_urrea_resume.pdf
-            profile.json
-          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: "CV — ${{ steps.tag.outputs.tag }}"
+          body: "Automated build from data.json"
+          files: cv.pdf

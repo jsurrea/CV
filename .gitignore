@@ -1,14 +1,17 @@
-# Generated files — not committed; built by CI or locally
-resume.tex
-resume.pdf
+# Compiled PDF — not committed; produced by CI and attached to Release
+cv.pdf
 
 # LaTeX build artifacts
 *.aux
 *.log
-*.out
 *.fls
 *.fdb_latexmk
+*.out
 *.synctex.gz
 *.toc
 *.lof
 *.lot
+
+# Python
+__pycache__/
+*.pyc
