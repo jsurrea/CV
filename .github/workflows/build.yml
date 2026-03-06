@@ -12,28 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ── 1. Checkout ──────────────────────────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ── 2. Install jq (for generate.sh) ─────────────────────────────────────
       - name: Install jq
         run: sudo apt-get install -y jq
 
-      # ── 3. Generate .tex fragments from profile.json ─────────────────────────
       - name: Generate section .tex files
         run: bash generate.sh
 
-      # ── 4. Compile PDF (LuaLaTeX for fontspec/Roboto support) ────────────────
       - name: Compile PDF
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
           compiler: lualatex
           args: -interaction=nonstopmode -file-line-error
-          extra_system_packages: fonts-roboto
 
-      # ── 5. Preparar archivos en root para Pages (PDF viewer sin .pdf) ────────
       - name: Prepare root files
         run: |
           cp main.pdf CV.pdf
@@ -45,23 +39,19 @@ jobs:
             <meta charset="utf-8">
             <title>CV</title>
             <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-            <style>
-              html, body { margin: 0; height: 100%; overflow: hidden; }
-              #pdfViewer { border: 1px solid #ccc; width: 100%; height: 100%; }
-            </style>
+            <style>html,body{margin:0;height:100%;overflow:hidden;}#pdfViewer{border:1px solid #ccc;width:100%;height:100%;}</style>
           </head>
           <body>
             <canvas id="pdfViewer"></canvas>
             <script>
-              const url = 'CV.pdf';
-              pdfjsLib.getDocument(url).promise.then(pdf => {
+              pdfjsLib.getDocument('CV.pdf').promise.then(pdf => {
                 pdf.getPage(1).then(page => {
                   const canvas = document.getElementById('pdfViewer');
                   const ctx = canvas.getContext('2d');
-                  const viewport = page.getViewport({ scale: 1.5 });
+                  const viewport = page.getViewport({scale:1.5});
                   canvas.height = viewport.height;
                   canvas.width = viewport.width;
-                  page.render({ canvasContext: ctx, viewport });
+                  page.render({canvasContext:ctx,viewport});
                 });
               }).catch(console.error);
             </script>
@@ -69,7 +59,6 @@ jobs:
           </html>
           EOF
 
-      # ── 6. Deploy a root de gh-pages ─────────────────────────────────────────
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
