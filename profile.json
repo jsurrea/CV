@@ -1,0 +1,180 @@
+{
+  "basics": {
+    "name": "Juan Sebastian Urrea Lopez",
+    "label": "Software Engineer & AI Researcher",
+    "email": "jurrea5518@gmail.com",
+    "phone": "(+57) 315-260-8311",
+    "url": "https://jsurrea.github.io/",
+    "summary": "Software engineer and AI researcher with dual B.Sc. degrees (Magna Cum Laude, 4.69/5.0) and an ongoing M.Sc. from Universidad de los Andes. Author of 2 IEEE publications in computer vision and software simulation. Production experience architecting cloud-native systems for 100K+ users at YC-backed companies using AWS, Go, and Flutter. Founder of open-source tools serving 8K+ students. Research experience at Cornell University (SURF Fellow) and Universidad de los Andes Biomedical CV Lab.",
+    "profiles": [
+      { "network": "LinkedIn", "url": "https://www.linkedin.com/in/js-urrea/" },
+      { "network": "GitHub",   "url": "https://github.com/jsurrea" },
+      { "network": "ORCID",   "url": "https://orcid.org/0009-0006-9814-7765" },
+      { "network": "Website",  "url": "https://jsurrea.github.io/" }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Universidad de los Andes",
+      "url": "https://uniandes.edu.co/",
+      "degrees": [
+        "M.Sc. in Systems \\& Computing Engineering (in progress, Jan 2026 -- present)",
+        "B.Sc. in Systems \\& Computing Engineering --- Magna Cum Laude 4.69/5.0 (2019 -- 2025)",
+        "B.Sc. in Industrial Engineering --- Magna Cum Laude 4.70/5.0 (2019 -- 2024)",
+        "Minor in Biomedical Engineering (AI \\& Computer Vision) (2019 -- 2024)"
+      ],
+      "highlights": [
+        "Full-tuition merit-based scholarship maintained for 6 years.",
+        "Graduate coursework: reinforcement learning, advanced computer vision, graduate-level ML.",
+        "Minor research under Prof. Pablo Arbeláez at the Biomedical Computer Vision Research Group.",
+        "11th best national score on the Saber Pro exit exam (\\textasciitilde200K test-takers)."
+      ],
+      "location": "Bogotá, Colombia"
+    }
+  ],
+  "work": [
+    {
+      "name": "Truora Inc.",
+      "note": "YC W19",
+      "url": "https://www.truora.com/",
+      "position": "Software Engineer",
+      "location": "Bogotá, Colombia",
+      "startDate": "Aug 2025",
+      "endDate": "Present",
+      "highlights": [
+        "Architected serverless AWS integration (EventBridge, Lambda/Go, API Gateway) syncing HubSpot opportunity data with idempotent processing, Redis caching, and Secrets Manager --- delivering \\$10K in AWS credits upon validation.",
+        "Implemented webhook signature validation and secure API key rotation to guarantee end-to-end data integrity."
+      ]
+    },
+    {
+      "name": "Caseware International",
+      "url": "https://www.caseware.com/",
+      "position": "Software Developer",
+      "location": "Bogotá, Colombia",
+      "startDate": "Jan 2024",
+      "endDate": "Aug 2025",
+      "highlights": [
+        "Led zero-downtime migration from RDS to S3 Parquet for 100K+ users, owning a dual-layer validation system comparing legacy and new implementations to guarantee identical responses.",
+        "Built Java GraphQL client and New Relic dashboards for anomaly detection; contributed accessibility improvements (focus traps, screen readers) and ag-grid data grid components."
+      ]
+    },
+    {
+      "name": "Multiaservi Ltda.",
+      "url": "https://multiaservi.com.co/",
+      "position": "Application Developer",
+      "location": "Bogotá, Colombia",
+      "startDate": "Dec 2024",
+      "endDate": "Jun 2025",
+      "highlights": [
+        "Built offline-first Flutter mobile app with automatic data/image sync and a Nest.js backend (Auth0, RBAC) for a tax-auditing platform serving low-connectivity rural areas of Colombia.",
+        "Designed real-time location-tracking dashboards optimized for low-spec Android environments."
+      ]
+    },
+    {
+      "name": "Cornell University --- Dept. of Computer Science",
+      "url": "https://www.cs.cornell.edu/~legunsen/",
+      "position": "Research Engineer (SURF Fellow)",
+      "location": "Ithaca, NY, USA",
+      "startDate": "Jun 2023",
+      "endDate": "Aug 2023",
+      "highlights": [
+        "10-week fellowship under Prof. Owolabi Legunsen studying inline-test co-evolution across 30+ open-source Java projects; curated 200+ statement-level breaking changes.",
+        "Built automated pipeline simulating project Git history --- generating inline tests via ExLi, rolling forward through commits, and recording pass/fail results."
+      ]
+    },
+    {
+      "name": "Kimberly-Clark Corporation",
+      "url": "https://www.kimberly-clark.com/",
+      "position": "Data Scientist",
+      "location": "Bogotá, Colombia",
+      "startDate": "Jul 2022",
+      "endDate": "Jan 2023",
+      "highlights": [
+        "Applied NLP embeddings to deduplicate 30K client records in SQL Server; automated Power BI documentation with Python (100+ hours saved) and added version control for 32 reports.",
+        "Implemented production monitoring pipeline for a churn-prediction model to track data drift and ensure reliability."
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "authors": "J.\\,S. Urrea-Lopez, C. Barreto-Reyes, M. Linares-Vásquez",
+      "title": "ANTARES: A Software-Based Tool for Simulating Naval Radar Operations",
+      "venue": "IEEE International Conference on Military Technologies (ICMT)",
+      "year": "2025",
+      "paperUrl": "https://ieeexplore.ieee.org/document/11061265",
+      "codeUrl": "https://github.com/TheSoftwareDesignLab/ANTARES",
+      "demoUrl": "https://thesoftwaredesignlab.github.io/ANTARES"
+    },
+    {
+      "authors": "E.\\,S. Lozano Roa, J.\\,S. Urrea López, I.\\,D. Chacón Silva",
+      "title": "Real-Time Face Mask Detection with SSD",
+      "venue": "IEEE 2nd International Congress of Biomedical Engineering (CI-IB\\&BI)",
+      "year": "2021",
+      "paperUrl": "https://ieeexplore.ieee.org/document/9626095",
+      "codeUrl": "https://github.com/jsurrea/face-mask-detection-SSD",
+      "demoUrl": ""
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Ego4D --- Meta AI Research",
+      "url": "https://ego4d-data.org/",
+      "role": "Data Contributor",
+      "startDate": "Jun 2021",
+      "endDate": "Aug 2021",
+      "summary": "Contributed egocentric video footage to Ego4D, the world's largest publicly available first-person video dataset, supporting research on embodied AI and egocentric perception."
+    }
+  ],
+  "awards": [
+    {
+      "title": "Saber Pro --- 11th Best National Score",
+      "date": "Dec 2024",
+      "awarder": "Ministry of Education of Colombia",
+      "summary": "Ranked 11th nationally among \\textasciitilde200K undergraduate test-takers across critical reading, quantitative reasoning, scientific reasoning, and English."
+    },
+    {
+      "title": "Full-Tuition Merit-Based Scholarship",
+      "date": "2018",
+      "awarder": "Universidad de los Andes",
+      "summary": "Competitive merit scholarship covering full tuition for 6-year dual-degree program; maintained through graduation."
+    },
+    {
+      "title": "Hackathon \\& Competition Wins (6+)",
+      "date": "2022 -- 2024",
+      "awarder": "Various",
+      "summary": "3\\texttimes{} Codefest Ad Astra (2022, 2023, 2024); 1st Place Extreme Programming Competition 2022; Sabana Hack 2022; DataJam for Transparency 2022. Domains: full-stack, competitive programming, data science."
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Building LLM Applications with Prompt Engineering",
+      "issuer": "NVIDIA Deep Learning Institute",
+      "date": "Apr 2025"
+    },
+    {
+      "name": "Building Transformer-Based NLP Applications",
+      "issuer": "NVIDIA Deep Learning Institute",
+      "date": "May 2024"
+    },
+    {
+      "name": "Fundamentals of Deep Learning",
+      "issuer": "NVIDIA Deep Learning Institute",
+      "date": "Apr 2024"
+    },
+    {
+      "name": "Data Science for All: Colombia 5.0 --- Honors",
+      "issuer": "Correlation One (3\\% acceptance rate)",
+      "date": "Sep 2021"
+    },
+    {
+      "name": "Applied Data Science with Python Specialization (5 courses)",
+      "issuer": "University of Michigan / Coursera",
+      "date": "Jan 2021"
+    },
+    {
+      "name": "Deep Learning Specialization (5 courses)",
+      "issuer": "DeepLearning.AI / Coursera",
+      "date": "Jul 2020"
+    }
+  ]
+}

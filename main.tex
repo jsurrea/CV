@@ -1,0 +1,82 @@
+%!TEX program = lualatex
+\documentclass[11pt,a4paper]{article}
+
+% ── Font & encoding ────────────────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{Roboto}[
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% ── ATS compliance ─────────────────────────────────────────────────────────────
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% ── Layout ─────────────────────────────────────────────────────────────────────
+\usepackage[a4paper, margin=0.65in, top=0.55in, bottom=0.55in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{microtype}
+
+% ── Links ──────────────────────────────────────────────────────────────────────
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{fontawesome5}
+
+% ── Section style ──────────────────────────────────────────────────────────────
+\titleformat{\section}
+  {\vspace{-6pt}\large\bfseries\scshape\raggedright}
+  {}{0em}{}[\titlerule\vspace{-4pt}]
+\titlespacing*{\section}{0pt}{6pt}{4pt}
+
+% ── Commands ───────────────────────────────────────────────────────────────────
+% Experience entry: \expEntry{Role}{Company}{Location}{Dates}
+\newcommand{\expEntry}[4]{%
+  \textbf{#1} \textbar{} \textbf{#2} \hfill \textit{#3} \hfill #4\\[-2pt]
+}
+
+% ── Hyph / overflow guards ─────────────────────────────────────────────────────
+\setlength{\emergencystretch}{3em}
+\sloppy
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{empty}
+
+% ── Header ────────────────────────────────────────────────────────────────────
+\input{sections/header.tex}
+
+% ── Summary ───────────────────────────────────────────────────────────────────
+\section{Summary}
+\input{sections/summary.tex}
+
+% ── Education ─────────────────────────────────────────────────────────────────
+\section{Education}
+\textbf{\href{https://uniandes.edu.co/}{Universidad de los Andes}} \hfill Bogotá, Colombia\\
+\input{sections/education.tex}
+
+% ── Experience ────────────────────────────────────────────────────────────────
+\section{Experience}
+\input{sections/experience.tex}
+
+% ── Publications ──────────────────────────────────────────────────────────────
+\section{Publications}
+\input{sections/publications.tex}
+
+% ── Volunteering ──────────────────────────────────────────────────────────────
+\section{Volunteering}
+\input{sections/volunteering.tex}
+
+% ── Honors \& Awards ──────────────────────────────────────────────────────────
+\section{Honors \& Awards}
+\input{sections/awards.tex}
+
+% ── Certifications ────────────────────────────────────────────────────────────
+\section{Certifications}
+{\small
+\input{sections/certifications.tex}
+}
+
+\end{document}
