@@ -1,6 +1,10 @@
 {{=<< >>=}}
-\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=2pt]
+\resumeSubHeadingListStart
 <<#awards>>
-  \item \textbf{<<& title>>} (<<& date>>) --- <<& awarder>>. <<& summary>>
+  \resumeProjectHeading
+    {\textbf{<<& title>>} $|$ {\color{dark-grey}\small <<& awarder>>}}{<<& date>>}
+  \resumeItemListStart
+    \resumeItem{<<& summary>>}
+  \resumeItemListEnd
 <</awards>>
-\end{itemize}
+\resumeSubHeadingListEnd

@@ -1,7 +1,10 @@
 {{=<< >>=}}
+\resumeSubHeadingListStart
 <<#volunteer>>
-\textbf{\href{<<& url>>}{<<& organization>>}} \hfill <<& startDate>> -- <<& endDate>>\\
-\textit{<<& role>>}\\
-<<& summary>>
-\vspace{4pt}
+  \resumeProjectHeading
+    {\textbf{\href{<<& url>>}{<<& organization>>}} $|$ \textit{<<& role>>}}{<<& startDate>> -- <<& endDate>>}
+  \resumeItemListStart
+    \resumeItem{<<& summary>>}
+  \resumeItemListEnd
 <</volunteer>>
+\resumeSubHeadingListEnd

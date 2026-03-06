@@ -1,10 +1,13 @@
 {{=<< >>=}}
+\resumeSubHeadingListStart
 <<#work>>
-\expEntry{<<& position>>}{\href{<<& url>>}{<<& name>>}<<#note>> ({\footnotesize <<& .>>})<</note>>}{<<& location>>}{<<& startDate>> -- <<& endDate>>}
-\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=1pt]
+  \resumeSubheading
+    {\href{<<& url>>}{<<& name>>}<<#note>> {\footnotesize(<<& .>>)}<</note>>}{<<& startDate>> -- <<& endDate>>}
+    {<<& position>>}{<<& location>>}
+  \resumeItemListStart
 <<#highlights>>
-  \item <<& .>>
+    \resumeItem{<<& .>>}
 <</highlights>>
-\end{itemize}
-\vspace{2pt}
+  \resumeItemListEnd
 <</work>>
+\resumeSubHeadingListEnd
