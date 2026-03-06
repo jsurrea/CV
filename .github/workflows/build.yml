@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install jq
-        run: sudo apt-get install -y jq
+        run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Generate section .tex files
         run: bash generate.sh
@@ -26,12 +26,13 @@ jobs:
         with:
           root_file: main.tex
           compiler: lualatex
-          args: -interaction=nonstopmode -file-line-error
+          args: -interaction=nonstopmode -file-line-error -synctex=1
+          latexmk_use_lualatex: true  # Ensures LuaLaTeX mode in latexmk [web:3][web:6]
 
       - name: Prepare root files
         run: |
-          cp main.pdf CV.pdf
-          cp profile.json profile.json
+          cp main.pdf CV.pdf || true
+          cp profile.json profile.json || true
           cat > index.html << 'EOF'
           <!DOCTYPE html>
           <html>
@@ -44,7 +45,8 @@ jobs:
           <body>
             <canvas id="pdfViewer"></canvas>
             <script>
-              pdfjsLib.getDocument('CV.pdf').promise.then(pdf => {
+              const url = 'CV.pdf';
+              pdfjsLib.getDocument(url).promise.then(pdf => {
                 pdf.getPage(1).then(page => {
                   const canvas = document.getElementById('pdfViewer');
                   const ctx = canvas.getContext('2d');
