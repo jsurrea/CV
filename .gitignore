@@ -1,0 +1,14 @@
+# Generated files — not committed; built by CI or locally
+resume.tex
+resume.pdf
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lof
+*.lot
