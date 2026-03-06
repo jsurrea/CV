@@ -10,9 +10,7 @@
   BoldItalicFont = *-BoldItalic
 ]
 
-% ── ATS compliance ─────────────────────────────────────────────────────────────
-\input{glyphtounicode}
-\pdfgentounicode=1
+% ── ATS compliance (LuaLaTeX handles Unicode natively) ────────────────────────
 
 % ── Layout ─────────────────────────────────────────────────────────────────────
 \usepackage[a4paper, margin=0.65in, top=0.55in, bottom=0.55in]{geometry}
@@ -54,7 +52,6 @@
 
 % ── Education ─────────────────────────────────────────────────────────────────
 \section{Education}
-\textbf{\href{https://uniandes.edu.co/}{Universidad de los Andes}} \hfill Bogotá, Colombia\\
 \input{sections/education.tex}
 
 % ── Experience ────────────────────────────────────────────────────────────────
