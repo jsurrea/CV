@@ -22,7 +22,7 @@ jobs:
         uses: haskell-actions/setup@v2
         with:
           ghc-version: "9.6.7"
-          cabal-version: "3.12.1.0"
+          cabal-version: "latest"
 
       # ── Cabal dependency cache ────────────────────────────────────────────────
       - name: Cache Cabal store
