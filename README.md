@@ -1,7 +1,6 @@
 # jsurrea/CV
 
 [![Build & Publish CV](https://github.com/jsurrea/CV/actions/workflows/build.yml/badge.svg)](https://github.com/jsurrea/CV/actions/workflows/build.yml)
-[![Latest Release](https://img.shields.io/github/v/release/jsurrea/CV)](https://github.com/jsurrea/CV/releases/latest)
 
 LaTeX CV driven by `profile.json`. GitHub Actions builds a versioned PDF on demand.
 
@@ -9,9 +8,8 @@ LaTeX CV driven by `profile.json`. GitHub Actions builds a versioned PDF on dema
 
 | Resource | URL |
 |---|---|
-| Latest PDF | https://jsurrea.github.io/CV/cv.pdf |
+| Latest PDF | https://jsurrea.github.io/CV |
 | Latest JSON | https://jsurrea.github.io/CV/profile.json |
-| All versions | https://github.com/jsurrea/CV/releases |
 
 ## Repository Structure
 
@@ -66,10 +64,3 @@ make clean      # remove all generated/compiled files
 3. Open `main.pdf` to review.
 4. Commit `profile.json` (and optionally `main.tex`) and push to `main`.
 
-## Publishing a New Version
-
-Go to **Actions → Build & Publish CV → Run workflow** in the GitHub UI.
-Optionally specify a tag (e.g. `v2026.06.01`); defaults to today's date.
-
-A new **GitHub Release** will be created with `main.pdf` attached,
-and the Pages deployment will be updated with the latest PDF and JSON.
