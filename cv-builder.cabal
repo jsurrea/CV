@@ -5,7 +5,7 @@ synopsis:      Populate LaTeX CV templates from a YAML profile
 description:   Reads data/profile.yaml and renders Mustache templates in sections/
 license:       MIT
 author:        Juan Sebastian Urrea Lopez
-maintainer:    jurrea5518@gmail.com
+maintainer:    68788933+jsurrea@users.noreply.github.com
 category:      Text
 build-type:    Simple
 
