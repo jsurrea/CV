@@ -1,46 +1,45 @@
-name: Build CV
+name: Build & Publish CV
 
 on:
   workflow_dispatch:
     inputs:
       version_tag:
-        description: 'Release tag (e.g. v2026.03.05). Defaults to current date.'
+        description: 'Release tag (e.g. v2026.03.05). Defaults to today.'
         required: false
         type: string
+
+permissions:
+  contents: write   # needed to create Releases and push gh-pages
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      # ── 2. Install jq (for generate.sh) ─────────────────────────────────────
+      - name: Install jq
+        run: sudo apt-get install -y jq
 
-      - name: Install Python dependencies
-        run: pip install jinja2
+      # ── 3. Generate .tex fragments from profile.json ─────────────────────────
+      #       MUST come before the LaTeX compile step
+      - name: Generate section .tex files
+        run: bash generate.sh
 
-      - name: Install TeX Live
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-extra texlive-fonts-extra \
-            texlive-fonts-recommended latexmk
-
-      - name: Generate cv.tex from data.json
-        run: python generate.py --tex-only
-
+      # ── 4. Compile PDF (LuaLaTeX for fontspec/Roboto support) ────────────────
       - name: Compile PDF
-        run: |
-          latexmk -pdf -interaction=nonstopmode cv.tex
-          latexmk -c
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          compiler: lualatex
+          args: -interaction=nonstopmode -file-line-error
+          extra_system_packages: fonts-roboto
 
-      - name: Determine release tag
+      # ── 5. Determine release tag ─────────────────────────────────────────────
+      - name: Set release tag
         id: tag
         run: |
           if [ -n "${{ github.event.inputs.version_tag }}" ]; then
@@ -49,10 +48,26 @@ jobs:
             echo "tag=v$(date +'%Y.%m.%d')" >> $GITHUB_OUTPUT
           fi
 
-      - name: Create GitHub Release and upload PDF
+      # ── 6. Create versioned GitHub Release with PDF attached ─────────────────
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: "CV — ${{ steps.tag.outputs.tag }}"
-          body: "Automated build from data.json"
-          files: cv.pdf
+          body: "Auto-generated from profile.json"
+          files: main.pdf
+
+      # ── 7. Deploy latest PDF + JSON to GitHub Pages ──────────────────────────
+      - name: Prepare Pages directory
+        run: |
+          mkdir -p _site
+          cp main.pdf _site/cv.pdf
+          cp profile.json _site/profile.json
+          echo '<meta http-equiv="refresh" content="0; url=cv.pdf">' > _site/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
