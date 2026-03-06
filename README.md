@@ -1,66 +1,45 @@
-# jsurrea/CV
+# CV
 
-[![Build & Publish CV](https://github.com/jsurrea/CV/actions/workflows/build.yml/badge.svg)](https://github.com/jsurrea/CV/actions/workflows/build.yml)
+Professional LaTeX CV built from a YAML profile using Haskell.
 
-LaTeX CV driven by `profile.json`. GitHub Actions builds a versioned PDF on demand.
-
-## Public URLs
-
-| Resource | URL |
-|---|---|
-| Latest PDF | https://jsurrea.github.io/CV |
-| Latest JSON | https://jsurrea.github.io/CV/profile.json |
-
-## Repository Structure
+## Structure
 
 ```
-jsurrea/CV/
-├── profile.json                 # Single source of truth — all CV content
-├── main.tex                     # Master LaTeX file — \inputs generated snippets
-├── sections/                    # Static or generated .tex fragments
-│   ├── header.tex               # Name + contact links (static, small edits only)
-│   ├── summary.tex              # Generated from JSON
-│   ├── education.tex            # Generated from JSON
-│   ├── experience.tex           # Generated from JSON
-│   ├── publications.tex         # Generated from JSON
-│   ├── volunteering.tex         # Generated from JSON
-│   ├── awards.tex               # Generated from JSON
-│   └── certifications.tex       # Generated from JSON
-├── generate.sh                  # Runs jq → writes sections/*.tex locally
-├── Makefile                     # Targets: generate, pdf, clean, all
-├── .github/
-│   └── workflows/
-│       └── build.yml            # Manual trigger: generate → compile → Release + Pages
-├── .gitignore
-└── README.md
+.
+├── data/
+│   └── profile.yaml          # Single source of truth for all CV data
+├── sections/
+│   ├── *.tex.mustache        # Mustache section templates
+│   └── *.tex                 # Generated LaTeX sections (git-ignored)
+├── app/
+│   └── Main.hs               # Haskell template renderer
+├── cv-builder.cabal          # Cabal build configuration
+├── cabal.project             # Cabal project settings
+├── main.tex                  # Root LaTeX document
+├── index.html                # GitHub Pages PDF viewer
+└── Makefile                  # Build automation
 ```
 
-## Prerequisites
+## Workflow
 
-- **TeX Live** (Full or Extras) with LuaLaTeX:
-  ```bash
-  # Ubuntu/Debian
-  sudo apt install texlive-full fonts-roboto
-  # macOS (Homebrew)
-  brew install --cask mactex && brew install font-roboto
-  ```
-- **jq** — `sudo apt install jq` / `brew install jq`
+1. Edit `data/profile.yaml` to update CV content.
+2. Run `make` to build the PDF locally.
+3. Push to `main` — GitHub Actions will compile and deploy automatically.
 
-## Local Build
+## GitHub Pages
+
+| URL | Content |
+|-----|---------|
+| `jsurrea.github.io/CV` | PDF viewer |
+| `jsurrea.github.io/CV/resume.pdf` | Raw PDF |
+| `jsurrea.github.io/CV/profile.yaml` | Profile YAML |
+
+## Local build
+
+Requires:
+- [GHC + Cabal](https://www.haskell.org/ghcup/)
+- LuaLaTeX (TeX Live)
 
 ```bash
-git clone https://github.com/jsurrea/CV.git && cd CV
-
-make all        # generate sections/*.tex + compile main.pdf
-make generate   # only regenerate .tex (no compile)
-make pdf        # only compile (assumes sections already generated)
-make clean      # remove all generated/compiled files
+make
 ```
-
-## Editing Your CV
-
-1. Open `profile.json` — every section is documented and self-explanatory.
-2. Run `make all` to regenerate and recompile.
-3. Open `main.pdf` to review.
-4. Commit `profile.json` (and optionally `main.tex`) and push to `main`.
-

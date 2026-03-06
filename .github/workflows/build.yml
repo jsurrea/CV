@@ -2,7 +2,8 @@ name: Build & Publish CV
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -12,61 +13,55 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      # ── Checkout ─────────────────────────────────────────────────────────────
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+      # ── Haskell setup ────────────────────────────────────────────────────────
+      - name: Set up GHC and Cabal
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: "9.6.7"
+          cabal-version: "3.12.1.0"
 
-      - name: Generate section .tex files
-        run: bash generate.sh
+      # ── Cabal dependency cache ────────────────────────────────────────────────
+      - name: Cache Cabal store
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cabal/store
+            dist-newstyle
+          key: ${{ runner.os }}-cabal-${{ hashFiles('cv-builder.cabal', 'cabal.project') }}
+          restore-keys: |
+            ${{ runner.os }}-cabal-
 
+      # ── Build cv-builder ──────────────────────────────────────────────────────
+      - name: Build cv-builder
+        run: cabal build cv-builder
+
+      # ── Generate section .tex files ───────────────────────────────────────────
+      - name: Generate LaTeX sections from YAML + templates
+        run: cabal run cv-builder
+
+      # ── Compile PDF with LuaLaTeX ─────────────────────────────────────────────
       - name: Compile PDF
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
           latexmk_use_lualatex: true
 
-      - name: Workaround if glyphtounicode persists (optional)
-        if: failure()
+      # ── Prepare GitHub Pages deployment directory ─────────────────────────────
+      - name: Prepare Pages directory
         run: |
-          docker run --rm -v $(pwd):/workdir ghcr.io/xu-cheng/texlive-full:latest lualatex -interaction=nonstopmode /workdir/main.tex
+          mkdir -p _site
+          cp main.pdf          _site/resume.pdf
+          cp index.html        _site/index.html
+          cp data/profile.yaml _site/profile.yaml
 
-      - name: Prepare root files
-        run: |
-          cp main.pdf CV.pdf || true
-          cp profile.json profile.json || true
-          cat > index.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <title>CV</title>
-            <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-            <style>html,body{margin:0;height:100%;overflow:hidden;}#pdfViewer{border:1px solid #ccc;width:100%;height:100%;}</style>
-          </head>
-          <body>
-            <canvas id="pdfViewer"></canvas>
-            <script>
-              const url = 'CV.pdf';
-              pdfjsLib.getDocument(url).promise.then(pdf => {
-                pdf.getPage(1).then(page => {
-                  const canvas = document.getElementById('pdfViewer');
-                  const ctx = canvas.getContext('2d');
-                  const viewport = page.getViewport({scale:1.5});
-                  canvas.height = viewport.height;
-                  canvas.width = viewport.width;
-                  page.render({canvasContext:ctx,viewport});
-                });
-              }).catch(console.error);
-            </script>
-          </body>
-          </html>
-          EOF
-
+      # ── Deploy to GitHub Pages ────────────────────────────────────────────────
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: _site
           force_orphan: true
