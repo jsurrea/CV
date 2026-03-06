@@ -25,9 +25,12 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          compiler: lualatex
-          args: -interaction=nonstopmode -file-line-error -synctex=1
-          latexmk_use_lualatex: true  # Ensures LuaLaTeX mode in latexmk [web:3][web:6]
+          latexmk_use_lualatex: true
+
+      - name: Workaround if glyphtounicode persists (optional)
+        if: failure()
+        run: |
+          docker run --rm -v $(pwd):/workdir ghcr.io/xu-cheng/texlive-full:latest lualatex -interaction=nonstopmode /workdir/main.tex
 
       - name: Prepare root files
         run: |
