@@ -54,6 +54,7 @@ headerCtx :: Value -> Value
 headerCtx p = object
   [ "name"           .= getStr ["basics", "name"] p
   , "email"          .= getStr ["basics", "email"] p
+  , "phone"          .= getStr ["basics", "phone"] p
   , "website_url"    .= getStr ["basics", "url"] p
   , "website_label"  .= T.pack "jsurrea.github.io"
   , "linkedin_url"   .= getProfileField "LinkedIn" "url" p

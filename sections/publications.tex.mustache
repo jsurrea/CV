@@ -1,9 +1,11 @@
 {{=<< >>=}}
-\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\resumeSubHeadingListStart
 <<#publications>>
-  \item <<& authors>>. \textit{<<& title>>}. \textbf{<<& venue>>}, <<& year>>.
-    \href{<<& paperUrl>>}{[Paper]}<<#codeUrl>>
-    \href{<<& .>>}{[Code]}<</codeUrl>><<#demoUrl>>
-    \href{<<& .>>}{[Demo]}<</demoUrl>>
+  \resumeProjectHeading
+    {\textbf{<<& title>>}}{<<& year>>}
+  \resumeItemListStart
+    \resumeItem{<<& authors>>. \textbf{<<& venue>>}.
+      \href{<<& paperUrl>>}{[Paper]}<<#codeUrl>> \href{<<& .>>}{[Code]}<</codeUrl>><<#demoUrl>> \href{<<& .>>}{[Demo]}<</demoUrl>>}
+  \resumeItemListEnd
 <</publications>>
-\end{enumerate}
+\resumeSubHeadingListEnd

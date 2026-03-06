@@ -1,15 +1,12 @@
 {{=<< >>=}}
 \begin{center}
-  {\LARGE\bfseries <<& name>>}\\[4pt]
+  {\Huge\bfseries <<& name>>} \\ \vspace{3pt}
   \small
-  \href{mailto:<<& email>>}{\faEnvelope\ <<& email>>}
-  \textbar{}
-  \href{<<& website_url>>}{\faGlobe\ <<& website_label>>}
-  \textbar{}
-  \href{<<& linkedin_url>>}{\faLinkedin\ <<& linkedin_label>>}
-  \textbar{}
-  \href{<<& github_url>>}{\faGithub\ <<& github_label>>}
-  \textbar{}
-  \href{<<& orcid_url>>}{\faOrcid\ ORCID}
+  \faPhone*\ \texttt{<<& phone>>} \hspace{1pt} $|$
+  \hspace{1pt} \faEnvelope\ \href{mailto:<<& email>>}{\texttt{<<& email>>}} \hspace{1pt} $|$
+  \hspace{1pt} \faGlobe\ \href{<<& website_url>>}{\texttt{<<& website_label>>}} \\[1pt]
+  \faLinkedin\ \href{<<& linkedin_url>>}{\texttt{<<& linkedin_label>>}} \hspace{1pt} $|$
+  \hspace{1pt} \faGithub\ \href{<<& github_url>>}{\texttt{<<& github_label>>}} \hspace{1pt} $|$
+  \hspace{1pt} \faOrcid\ \href{<<& orcid_url>>}{\texttt{ORCID}}
+  \\ \vspace{-3pt}
 \end{center}
-\vspace{-6pt}

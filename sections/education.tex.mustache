@@ -1,12 +1,15 @@
 {{=<< >>=}}
+\resumeSubHeadingListStart
 <<#education>>
-\textbf{\href{<<& url>>}{<<& institution>>}} \hfill <<& location>>\\
-\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=2pt]
+  \resumeProjectHeading
+    {\textbf{\href{<<& url>>}{<<& institution>>}}}{<<& location>>}
+  \resumeItemListStart
 <<#degrees>>
-  \item <<& .>>
+    \resumeItem{<<& .>>}
 <</degrees>>
 <<#highlights>>
-  \item <<& .>>
+    \resumeItem{<<& .>>}
 <</highlights>>
-\end{itemize}
+  \resumeItemListEnd
 <</education>>
+\resumeSubHeadingListEnd
