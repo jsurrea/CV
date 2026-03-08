@@ -46,7 +46,6 @@ education:
     highlights:
       - "Full-tuition merit-based scholarship maintained for 6 years"
       - "11th best national score on the Saber Pro exit exam (~200K test-takers)"
-      - "Minor in Biomedical Engineering (AI & Computer Vision)"
       - "Research under Prof. Pablo Arbeláez at the Biomedical Computer Vision Research Group"
   - institution: "Universidad de los Andes"
     url: "https://uniandes.edu.co/"
@@ -58,6 +57,15 @@ education:
     gpa: "4.70/5.0"
     honor: "Magna Cum Laude"
     highlights: []
+  - institution: "Universidad de los Andes"
+    url: "https://uniandes.edu.co/"
+    location: "Bogotá, Colombia"
+    area: "Biomedical Engineering"
+    studyType: "Minor"
+    startDate: "2019-01"
+    endDate: "2025-06"
+    highlights:
+      - "Focus: AI and Computer Vision applied to biomedical imaging"
 
 work:
   - name: "Truora Inc."

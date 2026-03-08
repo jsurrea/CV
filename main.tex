@@ -18,7 +18,7 @@
 \definecolor{text-grey}{gray}{.08}
 
 % ── Layout ─────────────────────────────────────────────────────────────────────
-\usepackage[a4paper, margin=0.6in, top=0.5in, bottom=0.5in]{geometry}
+\usepackage[a4paper, left=0.5in, right=0.5in, top=0.4in, bottom=0.4in]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{microtype}
@@ -36,39 +36,47 @@
 \usepackage[hidelinks,unicode]{hyperref}
 \usepackage{fontawesome5}
 
-% ── Section style (bold, left-aligned, 2pt grey rule) ─────────────────────────
+% ── Section style (Jake's resume: small-caps, thin black rule) ─────────────────
 \titleformat{\section}{
-  \bfseries \vspace{2pt} \raggedright \large
-}{}{0em}{}[\color{light-grey}{\titlerule[2pt]}\vspace{-4pt}]
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
 \titlespacing*{\section}{0pt}{6pt}{3pt}
 
 % ── Resume entry macros ────────────────────────────────────────────────────────
-% Two-row entry: {Name}{Date}{Subtitle}{Location}
+% Two-row entry: {Name}{Location}{Degree/Role}{Date}
 \newcommand{\resumeSubheading}[4]{%
-  \vspace{-1pt}\item
-  \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\
+  \vspace{-2pt}\item
+  \begin{tabular*}{\linewidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & {\color{dark-grey}\small #2}\\
     \textit{\small #3} & {\color{dark-grey}\small #4}\\
-  \end{tabular*}\vspace{-4pt}%
+  \end{tabular*}\vspace{-6pt}%
+}
+
+% Sub-heading for additional degrees/positions under the same institution
+\newcommand{\resumeSubSubheading}[2]{%
+  \item
+  \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+    \textit{\small #1} & {\color{dark-grey}\small #2}\\
+  \end{tabular*}\vspace{-6pt}%
 }
 
 % One-row entry: {Left content}{Right date}
 \newcommand{\resumeProjectHeading}[2]{%
   \item
-  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-    #1 & {\color{dark-grey}\small #2}\\
-  \end{tabular*}\vspace{-4pt}%
+  \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & {\color{dark-grey}\small #2}\\
+  \end{tabular*}\vspace{-6pt}%
 }
 
 % Bullet item
 \newcommand{\resumeItem}[1]{%
-  \item\small{#1\vspace{-1pt}}%
+  \item\small{#1\vspace{-2pt}}%
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, itemsep=-2pt, topsep=1pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{1pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
