@@ -1,15 +1,12 @@
 {{=<< >>=}}
 \resumeSubHeadingListStart
-<<#education>>
-  \resumeProjectHeading
-    {\textbf{\href{<<& url>>}{<<& institution>>}}}{<<& location>>}
-  \resumeItemListStart
-<<#degrees>>
-    \resumeItem{<<& .>>}
-<</degrees>>
-<<#highlights>>
-    \resumeItem{<<& .>>}
-<</highlights>>
-  \resumeItemListEnd
-<</education>>
+<<#educationGroups>>
+  \resumeSubheading
+    {\href{<<& url>>}{<<& institution>>}}{<<& location>>}
+    {<<& firstLabel>>}{<<& firstDate>>}
+<<#otherDegrees>>
+  \resumeSubSubheading
+    {<<& label>>}{<<& date>>}
+<</otherDegrees>>
+<</educationGroups>>
 \resumeSubHeadingListEnd

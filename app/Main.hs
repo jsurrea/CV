@@ -6,7 +6,9 @@ import           Data.Aeson            (Value (..), object, (.=))
 import qualified Data.Aeson.Key        as Key
 import qualified Data.Aeson.KeyMap     as KM
 import qualified Data.Vector           as V
-import           Data.List             (find)
+import           Data.Function         (on)
+import           Data.List             (find, groupBy, sortBy)
+import           Data.Ord              (comparing)
 import           Data.Maybe            (fromMaybe)
 import qualified Data.Text             as T
 import qualified Data.Text.IO          as TIO
@@ -66,19 +68,85 @@ headerCtx p = object
 
 summaryCtx :: Value -> Value
 summaryCtx p = object
-  [ "summary" .= getStr ["basics", "summary"] p ]
+  [ "summary" .= latexEscape (getStr ["basics", "summary"] p) ]
 
 educationCtx :: Value -> Value
 educationCtx p = object
-  [ "education" .= Array (V.fromList (getArr "education" p)) ]
+  [ "educationGroups" .= Array (V.fromList (buildEdGroups (getArr "education" p))) ]
+
+-- | Group education entries by institution and build the display structure.
+-- Sort by institution first so non-adjacent same-institution entries are grouped.
+buildEdGroups :: [Value] -> [Value]
+buildEdGroups entries =
+  let sorted = sortBy (comparing getInstitution) entries
+      groups = groupBy ((==) `on` getInstitution) sorted
+  in  map buildEdGroup groups
+  where
+    getInstitution e = getStr ["institution"] e
+
+buildEdGroup :: [Value] -> Value
+buildEdGroup []           = Null
+buildEdGroup (first:rest) = object
+  [ "institution"  .= getStr ["institution"] first
+  , "url"          .= getStr ["url"]         first
+  , "location"     .= getStr ["location"]    first
+  , "firstLabel"   .= buildDegreeLabel first
+  , "firstDate"    .= buildEdDateRange first
+  , "otherDegrees" .= Array (V.fromList (map buildSubDegree rest))
+  ]
+
+buildSubDegree :: Value -> Value
+buildSubDegree e = object
+  [ "label" .= buildDegreeLabel  e
+  , "date"  .= buildEdDateRange  e
+  ]
+
+-- | Format a degree label, escaping LaTeX special characters.
+buildDegreeLabel :: Value -> T.Text
+buildDegreeLabel e =
+  let studyType = getStr ["studyType"] e
+      area      = latexEscape (getStr ["area"] e)
+      honor     = getStr ["honor"] e
+      honorSfx
+        | T.null honor = ""
+        | otherwise    = ", " <> honor
+  in  studyType <> " " <> area <> honorSfx
+
+-- | Build a "start -- end" date range, using "Present" for null end dates.
+buildEdDateRange :: Value -> T.Text
+buildEdDateRange e =
+  let start = getStr ["startDate"] e
+      end   = getStr ["endDate"]   e
+  in  if T.null end
+        then start <> " -- Present"
+        else start <> " -- " <> end
+
+-- | Escape LaTeX special characters in plain text fields.
+-- Handles &, %, and $ which are common in resume data.
+latexEscape :: T.Text -> T.Text
+latexEscape = T.replace "&" "\\&"
+            . T.replace "%" "\\%"
+            . T.replace "$" "\\$"
+
+-- | Recursively escape LaTeX special chars in all String values of a Value,
+-- leaving URL fields (url, paperUrl, codeUrl, demoUrl) untouched.
+sanitizeTexts :: Value -> Value
+sanitizeTexts (Object obj) = Object (KM.mapWithKey go obj)
+  where
+    urlKeys = map Key.fromText ["url", "paperUrl", "codeUrl", "demoUrl"]
+    go k v | k `elem` urlKeys = v
+    go _ v = sanitizeTexts v
+sanitizeTexts (Array arr)  = Array (V.map sanitizeTexts arr)
+sanitizeTexts (String t)   = String (latexEscape t)
+sanitizeTexts v            = v
 
 experienceCtx :: Value -> Value
 experienceCtx p = object
-  [ "work" .= Array (V.fromList (getArr "work" p)) ]
+  [ "work" .= Array (V.fromList (map sanitizeTexts (getArr "work" p))) ]
 
 publicationsCtx :: Value -> Value
 publicationsCtx p = object
-  [ "publications" .= Array (V.fromList (map sanitizePub (getArr "publications" p))) ]
+  [ "publications" .= Array (V.fromList (map (sanitizeTexts . sanitizePub) (getArr "publications" p))) ]
 
 -- | Replace empty URL strings with Null so Mustache sections are falsy.
 sanitizePub :: Value -> Value
@@ -92,15 +160,15 @@ sanitizePub v = v
 
 volunteerCtx :: Value -> Value
 volunteerCtx p = object
-  [ "volunteer" .= Array (V.fromList (getArr "volunteer" p)) ]
+  [ "volunteer" .= Array (V.fromList (map sanitizeTexts (getArr "volunteer" p))) ]
 
 awardsCtx :: Value -> Value
 awardsCtx p = object
-  [ "awards" .= Array (V.fromList (getArr "awards" p)) ]
+  [ "awards" .= Array (V.fromList (map sanitizeTexts (getArr "awards" p))) ]
 
 certificatesCtx :: Value -> Value
 certificatesCtx p = object
-  [ "certificates" .= Array (V.fromList (getArr "certificates" p)) ]
+  [ "certificates" .= Array (V.fromList (map sanitizeTexts (getArr "certificates" p))) ]
 
 -- ─── YAML accessors ───────────────────────────────────────────────────────────
 
