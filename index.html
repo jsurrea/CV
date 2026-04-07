@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juan Sebastian Urrea Lopez — CV</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #f0f0f0; font-family: sans-serif; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: #1a1a2e;
+      color: #fff;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 600; }
+    header a {
+      color: #aad4f5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid #aad4f5;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    header a:hover { background: #aad4f5; color: #1a1a2e; }
+    #viewer {
+      width: 100%;
+      height: calc(100vh - 50px);
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Juan Sebastian Urrea Lopez — CV</h1>
+    <a href="resume.pdf" download>Download PDF</a>
+  </header>
+  <iframe id="viewer" src="resume.pdf" title="CV PDF Viewer"></iframe>
+</body>
+</html>
