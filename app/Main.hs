@@ -25,6 +25,7 @@ main = do
   let sections =
         [ ("header",        headerCtx profile)
         , ("summary",       summaryCtx profile)
+        , ("skills",        skillsCtx profile)
         , ("education",     educationCtx profile)
         , ("experience",    experienceCtx profile)
         , ("publications",  publicationsCtx profile)
@@ -57,6 +58,7 @@ headerCtx p = object
   [ "name"           .= getStr ["basics", "name"] p
   , "email"          .= getStr ["basics", "email"] p
   , "phone"          .= getStr ["basics", "phone"] p
+  , "location"       .= getStr ["basics", "location"] p
   , "website_url"    .= getStr ["basics", "url"] p
   , "website_label"  .= T.pack "jsurrea.github.io"
   , "linkedin_url"   .= getProfileField "LinkedIn" "url" p
@@ -69,6 +71,25 @@ headerCtx p = object
 summaryCtx :: Value -> Value
 summaryCtx p = object
   [ "summary" .= latexEscape (getStr ["basics", "summary"] p) ]
+
+skillsCtx :: Value -> Value
+skillsCtx p = object
+  [ "languages"  .= joinList (getArr "languages"  (nav ["skills"] p))
+  , "mlAi"       .= joinList (getArr "mlAi"       (nav ["skills"] p))
+  , "cloudDevops".= joinList (getArr "cloudDevops" (nav ["skills"] p))
+  , "frontend"   .= joinList (getArr "frontend"   (nav ["skills"] p))
+  , "backend"    .= joinList (getArr "backend"    (nav ["skills"] p))
+  , "databases"  .= joinList (getArr "databases"  (nav ["skills"] p))
+  ]
+  where
+    joinList items = T.intercalate ", " [ t | String t <- items ]
+
+    getArr :: T.Text -> Value -> [Value]
+    getArr key (Object obj) =
+      case KM.lookup (Key.fromText key) obj of
+        Just (Array arr) -> V.toList arr
+        _                -> []
+    getArr _ _ = []
 
 educationCtx :: Value -> Value
 educationCtx p = object
@@ -87,13 +108,29 @@ buildEdGroups entries =
 buildEdGroup :: [Value] -> Value
 buildEdGroup []           = Null
 buildEdGroup (first:rest) = object
-  [ "institution"  .= getStr ["institution"] first
-  , "url"          .= getStr ["url"]         first
-  , "location"     .= getStr ["location"]    first
-  , "firstLabel"   .= buildDegreeLabel first
-  , "firstDate"    .= buildEdDateRange first
-  , "otherDegrees" .= Array (V.fromList (map buildSubDegree rest))
+  [ "institution"     .= getStr ["institution"] first
+  , "url"             .= getStr ["url"]         first
+  , "location"        .= getStr ["location"]    first
+  , "firstLabel"      .= buildDegreeLabel first
+  , "firstDate"       .= buildEdDateRange first
+  , "hasHighlights"   .= hasHighlights first
+  , "firstHighlights" .= buildHighlights first
+  , "otherDegrees"    .= Array (V.fromList (map buildSubDegree rest))
   ]
+
+-- | Check whether an education entry has highlights.
+hasHighlights :: Value -> Bool
+hasHighlights e =
+  case nav ["highlights"] e of
+    Array arr -> not (V.null arr)
+    _         -> False
+
+-- | Extract highlights list from an education entry, returning Null if empty.
+buildHighlights :: Value -> Value
+buildHighlights e =
+  case nav ["highlights"] e of
+    Array arr | not (V.null arr) -> Array (V.map sanitizeTexts arr)
+    _                            -> Null
 
 buildSubDegree :: Value -> Value
 buildSubDegree e = object
@@ -107,10 +144,14 @@ buildDegreeLabel e =
   let studyType = getStr ["studyType"] e
       area      = latexEscape (getStr ["area"] e)
       honor     = getStr ["honor"] e
-      honorSfx
-        | T.null honor = ""
-        | otherwise    = ", " <> honor
-  in  studyType <> " " <> area <> honorSfx
+      gpa       = getStr ["gpa"] e
+      suffixes  = filter (not . T.null)
+                    [ honor
+                    , if T.null gpa then "" else "GPA: " <> gpa
+                    ]
+      sfx | null suffixes = ""
+          | otherwise     = ", " <> T.intercalate ", " suffixes
+  in  studyType <> " " <> area <> sfx
 
 -- | Build a "start -- end" date range, using "Present" for null end dates.
 buildEdDateRange :: Value -> T.Text

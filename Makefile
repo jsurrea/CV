@@ -1,4 +1,4 @@
-.PHONY: all build generate pdf clean
+.PHONY: all build generate pdf clean preview
 
 all: build generate pdf
 
@@ -14,6 +14,10 @@ generate: build
 pdf: generate
 	lualatex -interaction=nonstopmode main.tex
 	lualatex -interaction=nonstopmode main.tex
+
+# High-res PNG preview
+preview: pdf
+	pdftoppm -png -r 300 -singlefile main.pdf main_preview
 
 # Clean build artefacts
 clean:

@@ -5,13 +5,13 @@ basics:
   phone: "(+57) 315-260-8311"
   url: "https://jsurrea.github.io/"
   summary: >-
-    Software engineer and AI researcher with dual B.Sc. degrees (Magna Cum Laude, 4.69/5.0)
-    and an ongoing M.Sc. from Universidad de los Andes. Author of 2 IEEE publications in
-    computer vision and software simulation. Production experience architecting cloud-native
-    systems for 100K+ users at YC-backed companies using AWS, Go, and Flutter. Founder of
-    open-source tools serving 8K+ students. Research experience at Cornell University (SURF Fellow)
-    and the Universidad de los Andes Biomedical Computer Vision Lab.
-  location: "Bogotá, Colombia"
+    Software engineer and AI researcher with dual B.Sc. degrees (Magna Cum Laude, 4.69--4.70/5.0)
+    from Universidad de los Andes. Incoming Erasmus Mundus (EMJM IPCV) scholar in Image Processing,
+    Computer Vision, and AI. Author of 2 IEEE publications in computer vision and software simulation.
+    Production experience building cloud-native systems for 100K+ users at YC-backed startups (Truora,
+    YC W19). Research at Cornell University (SURF Fellow) and the Uniandes Biomedical Computer Vision Lab.
+    Founder of open-source tools serving 8K+ students. 6+ hackathon wins.
+  location: "Bogota, Colombia"
   profiles:
     - network: "LinkedIn"
       url: "https://www.linkedin.com/in/js-urrea/"
@@ -24,183 +24,203 @@ basics:
       username: "0009-0006-9814-7765"
 
 education:
-  - institution: "Universidad de los Andes"
-    url: "https://uniandes.edu.co/"
-    location: "Bogotá, Colombia"
-    area: "Systems & Computing Engineering"
+  - institution: "Erasmus Mundus Joint Master -- EMJM IPCV"
+    url: "https://ipcv.eu/"
+    location: "EU (France, Spain, Hungary)"
+    area: "Image Processing, Computer Vision & AI"
     studyType: "M.Sc."
-    startDate: "2026-01"
+    startDate: "Sep 2026"
     endDate: null
     highlights:
-      - "Coursework: Reinforcement Learning, Advanced Computer Vision, Graduate-level ML"
-      - "Research focus: AI, Computer Vision, and Software Engineering"
+      - "Fully funded EU scholarship; U. Bordeaux, UAM Madrid, PPCU Budapest"
   - institution: "Universidad de los Andes"
     url: "https://uniandes.edu.co/"
-    location: "Bogotá, Colombia"
+    location: "Bogota, Colombia"
     area: "Systems & Computing Engineering"
     studyType: "B.Sc."
-    startDate: "2019-01"
-    endDate: "2025-06"
+    startDate: "2019"
+    endDate: "2025"
     gpa: "4.69/5.0"
     honor: "Magna Cum Laude"
     highlights:
-      - "Full-tuition merit-based scholarship maintained for 6 years"
-      - "11th best national score on the Saber Pro exit exam (~200K test-takers)"
-      - "Research under Prof. Pablo Arbeláez at the Biomedical Computer Vision Research Group"
+      - "Full-tuition merit scholarship (6 years). Distincion Ramon de Zubiria (highest GPA in department)"
+      - "11th best national score on Saber Pro (~200K test-takers). 16th on Saber 11 (600K+, 463/500)"
   - institution: "Universidad de los Andes"
     url: "https://uniandes.edu.co/"
-    location: "Bogotá, Colombia"
+    location: "Bogota, Colombia"
     area: "Industrial Engineering"
     studyType: "B.Sc."
-    startDate: "2019-01"
-    endDate: "2024-12"
+    startDate: "2019"
+    endDate: "2024"
     gpa: "4.70/5.0"
     honor: "Magna Cum Laude"
     highlights: []
   - institution: "Universidad de los Andes"
     url: "https://uniandes.edu.co/"
-    location: "Bogotá, Colombia"
+    location: "Bogota, Colombia"
     area: "Biomedical Engineering"
     studyType: "Minor"
-    startDate: "2019-01"
-    endDate: "2025-06"
-    highlights:
-      - "Focus: AI and Computer Vision applied to biomedical imaging"
+    startDate: "2019"
+    endDate: "2025"
+    highlights: []
 
 work:
   - name: "Truora Inc."
     note: "YC W19"
     url: "https://www.truora.com/"
     position: "Software Engineer"
-    location: "Bogotá, Colombia"
-    startDate: "2025-08"
-    endDate: null
+    location: "Bogota, Colombia"
+    startDate: "Aug 2025"
+    endDate: "Present"
     type: "full-time"
     highlights:
-      - "Architected serverless AWS integration (EventBridge, Lambda/Go, API Gateway) syncing HubSpot opportunity data with idempotent processing, Redis caching, and Secrets Manager — delivering $10K in AWS credits upon validation."
-      - "Implemented webhook signature validation and secure API key rotation to guarantee end-to-end data integrity."
-    stack: ["Go", "AWS Lambda", "EventBridge", "API Gateway", "Redis", "Secrets Manager", "HubSpot"]
+      - "Architected serverless AWS integration (EventBridge, Lambda/Go, API Gateway) syncing HubSpot data."
+      - "Implemented webhook signature validation and secure API key rotation for data integrity."
+    stack: []
+  - name: "Universidad de los Andes"
+    url: "https://uniandes.edu.co/"
+    position: "Graduate Teaching & Research Assistant"
+    location: "Bogota, Colombia"
+    startDate: "Jan 2026"
+    endDate: "Jun 2026"
+    type: "part-time"
+    highlights:
+      - "Developed educational material and workshops for AI course ISIS1611 (330 students)."
+      - "Conducted graduate research in computer vision and software engineering."
+    stack: []
   - name: "Caseware International"
     url: "https://www.caseware.com/"
     position: "Software Developer"
-    location: "Bogotá, Colombia"
-    startDate: "2024-01"
-    endDate: "2025-08"
+    location: "Bogota, Colombia"
+    startDate: "Jan 2024"
+    endDate: "Aug 2025"
     type: "full-time"
     highlights:
-      - "Led zero-downtime migration from RDS to S3 Parquet for 100K+ users, owning a dual-layer validation system comparing legacy and new implementations to guarantee identical responses."
-      - "Built Java GraphQL client and New Relic dashboards for anomaly detection; contributed accessibility improvements (focus traps, screen readers) and ag-grid data grid components."
-    stack: ["Java", "GraphQL", "AWS S3", "Parquet", "New Relic", "ag-grid"]
+      - "Led zero-downtime RDS-to-S3 Parquet migration for 100K+ users with dual-layer validation."
+      - "Built Java GraphQL client and New Relic dashboards; contributed accessibility and ag-grid components."
+    stack: []
   - name: "Multiaservi Ltda."
     url: "https://multiaservi.com.co/"
     position: "Application Developer"
-    location: "Bogotá, Colombia"
-    startDate: "2024-12"
-    endDate: "2025-06"
+    location: "Bogota, Colombia"
+    startDate: "Dec 2024"
+    endDate: "Jun 2025"
     type: "freelance"
     highlights:
-      - "Built offline-first Flutter mobile app with automatic data/image sync and a Nest.js backend (Auth0, RBAC) for a tax-auditing platform serving low-connectivity rural areas of Colombia."
-      - "Designed real-time location-tracking dashboards optimized for low-spec Android environments."
-    stack: ["Flutter", "Dart", "Nest.js", "Auth0", "Firebase", "GCP"]
-  - name: "Cornell University — Dept. of Computer Science"
+      - "Built offline-first Flutter app with Nest.js backend (Auth0, RBAC) for rural tax-auditing."
+      - "Designed real-time location-tracking dashboards optimized for low-spec Android devices."
+    stack: []
+  - name: "Cornell University --- Dept. of Computer Science"
     url: "https://www.cs.cornell.edu/~legunsen/"
     position: "Research Engineer (SURF Fellow)"
     location: "Ithaca, NY, USA"
-    startDate: "2023-06"
-    endDate: "2023-08"
+    startDate: "Jun 2023"
+    endDate: "Aug 2023"
     type: "research"
     highlights:
-      - "10-week fellowship under Prof. Owolabi Legunsen studying inline-test co-evolution across 30+ open-source Java projects; curated 200+ statement-level breaking changes."
-      - "Built automated pipeline simulating project Git history — generating inline tests via ExLi, rolling forward through commits, and recording pass/fail results."
-    stack: ["Java", "Git", "Python", "Bash", "ExLi"]
+      - "Studied inline-test co-evolution across 30+ open-source Java projects under Prof. O. Legunsen."
+      - "Built automated pipeline simulating Git history; curated 200+ statement-level breaking changes."
+    stack: []
   - name: "Kimberly-Clark Corporation"
     url: "https://www.kimberly-clark.com/"
     position: "Data Scientist"
-    location: "Bogotá, Colombia"
-    startDate: "2022-07"
-    endDate: "2023-01"
+    location: "Bogota, Colombia"
+    startDate: "Jul 2022"
+    endDate: "Jan 2023"
     type: "internship"
     highlights:
-      - "Applied NLP embeddings to deduplicate 30K client records in SQL Server; automated Power BI documentation with Python (100+ hours saved) and added version control for 32 reports."
-      - "Implemented production monitoring pipeline for a churn-prediction model to track data drift and ensure reliability."
-    stack: ["Python", "NLP", "SQL Server", "Power BI", "scikit-learn"]
+      - "Applied NLP embeddings to deduplicate 30K client records; automated Power BI docs (100+ hrs saved)."
+      - "Implemented production monitoring pipeline for a churn-prediction model tracking data drift."
+    stack: []
 
 publications:
-  - authors: "J. S. Urrea-Lopez, C. Barreto-Reyes, M. Linares-Vásquez"
+  - authors: "J. S. Urrea-Lopez, C. Barreto-Reyes, M. Linares-Vasquez"
     title: "ANTARES: A Software-Based Tool for Simulating Naval Radar Operations"
     venue: "IEEE International Conference on Military Technologies (ICMT)"
     year: "2025"
     paperUrl: "https://ieeexplore.ieee.org/document/11061265"
     codeUrl: "https://github.com/TheSoftwareDesignLab/ANTARES"
     demoUrl: "https://thesoftwaredesignlab.github.io/ANTARES"
-  - authors: "E. S. Lozano Roa, J. S. Urrea López, I. D. Chacón Silva"
+  - authors: "E. S. Lozano Roa, J. S. Urrea Lopez, I. D. Chacon Silva"
     title: "Real-Time Face Mask Detection with SSD"
-    venue: "IEEE 2nd International Congress of Biomedical Engineering (CI-IB&BI)"
+    venue: "IEEE 2nd Intl. Congress of Biomedical Engineering (CI-IB&BI)"
     year: "2021"
     paperUrl: "https://ieeexplore.ieee.org/document/9626095"
     codeUrl: "https://github.com/jsurrea/face-mask-detection-SSD"
     demoUrl: ""
 
 volunteer:
-  - organization: "Ego4D — Meta AI Research"
+  - organization: "Open Source Uniandes"
+    url: "https://github.com/Open-Source-Uniandes"
+    role: "Founder"
+    startDate: "2022"
+    endDate: "2025"
+    summary: "Founded open-source community at Universidad de los Andes; tools serving 8K+ students."
+  - organization: "Ego4D --- Meta AI Research"
     url: "https://ego4d-data.org/"
     role: "Data Contributor"
-    startDate: "2021-06"
-    endDate: "2021-08"
-    summary: "Contributed egocentric video footage to Ego4D, the world's largest publicly available first-person video dataset, supporting research on embodied AI and egocentric perception."
+    startDate: "Jun 2021"
+    endDate: "Aug 2021"
+    summary: "Contributed egocentric video footage to the world's largest first-person video dataset."
 
+# Awards kept in YAML for reference but not displayed
 awards:
-  - title: "Saber Pro — 11th Best National Score"
-    date: "2024-12"
-    awarder: "Ministry of Education of Colombia"
-    icon: "🥇"
-    summary: "Ranked 11th nationally among ~200K undergraduate test-takers across critical reading, quantitative reasoning, scientific reasoning, and English."
-  - title: "Full-Tuition Merit-Based Scholarship"
-    date: "2018-01"
-    awarder: "Universidad de los Andes"
-    icon: "🎓"
-    summary: "Competitive merit scholarship covering full tuition for a 6-year dual-degree program; maintained through graduation."
-  - title: "Hackathon & Competition Wins (6+)"
-    date: "2022-01"
-    awarder: "Various"
-    icon: "🏆"
-    summary: "3x Codefest Ad Astra (2022, 2023, 2024); 1st Place Extreme Programming Competition 2022; Sabana Hack 2022; DataJam for Transparency 2022. Domains: full-stack, competitive programming, data science."
-  - title: "EA GameJam — Best Game Experience"
-    date: "2026-01"
+  - title: "EA GameJam --- Best Game Experience"
+    date: "2026"
     awarder: "Electronic Arts"
-    icon: "🎮"
-    summary: "Best game experience award at the Electronic Arts Game Jam. NEXARI project."
+    summary: ""
+  - title: "Distincion Ramon de Zubiria (Highest GPA)"
+    date: "2024"
+    awarder: "Universidad de los Andes"
+    summary: ""
+  - title: "Saber Pro --- 11th Nationally (~200K test-takers)"
+    date: "2024"
+    awarder: "Min. Education Colombia"
+    summary: ""
+  - title: "Full-Tuition Merit Scholarship (6 years)"
+    date: "2018"
+    awarder: "Universidad de los Andes"
+    summary: ""
+  - title: "Saber 11 --- 16th Nationally (600K+ test-takers)"
+    date: "2018"
+    awarder: "ICFES"
+    summary: ""
+  - title: "6+ Hackathon Wins (Codefest, DataJam, XP, Sabana Hack)"
+    date: "2022--24"
+    awarder: "Various"
+    summary: ""
 
+# Certifications kept in YAML for reference but not displayed
 certificates:
-  - name: "Building LLM Applications with Prompt Engineering"
-    issuer: "NVIDIA Deep Learning Institute"
-    date: "2025-04"
+  - name: "Building LLM Apps with Prompt Engineering"
+    issuer: "NVIDIA DLI"
+    date: "2025"
     url: ""
   - name: "Building Transformer-Based NLP Applications"
-    issuer: "NVIDIA Deep Learning Institute"
-    date: "2024-05"
+    issuer: "NVIDIA DLI"
+    date: "2024"
     url: ""
   - name: "Fundamentals of Deep Learning"
-    issuer: "NVIDIA Deep Learning Institute"
-    date: "2024-04"
+    issuer: "NVIDIA DLI"
+    date: "2024"
     url: ""
-  - name: "Data Science for All: Colombia 5.0 — Honors"
-    issuer: "Correlation One (3% acceptance rate)"
-    date: "2021-09"
+  - name: "Data Science for All: Colombia 5.0 --- Honors"
+    issuer: "Correlation One (3% acceptance)"
+    date: "2021"
     url: ""
-  - name: "Applied Data Science with Python Specialization (5 courses)"
-    issuer: "University of Michigan / Coursera"
-    date: "2021-01"
+  - name: "Applied Data Science with Python (5 courses)"
+    issuer: "U. Michigan / Coursera"
+    date: "2021"
     url: ""
   - name: "Deep Learning Specialization (5 courses)"
     issuer: "DeepLearning.AI / Coursera"
-    date: "2020-07"
+    date: "2020"
     url: ""
 
 skills:
-  languages: [TypeScript, Python, Go, Java, Rust, Dart, SQL, C, Assembly]
-  mlAi: [PyTorch, TensorFlow, CNNs, Transformers, NeRF, Diffusion Models, RL, SSD, Object Detection, LLM Fine-tuning]
-  cloudDevops: [AWS Lambda, EventBridge, API Gateway, GCP, Cloud Run, Docker, GitHub Actions, New Relic]
-  frontend: [Astro, React, Vue.js, Flutter, Tailwind CSS, ag-grid, Plotly]
-  backend: [Nest.js, Node.js, GraphQL, REST, Auth0, Django]
-  databases: [PostgreSQL, Redis, SQL Server, Firebase, DynamoDB]
+  languages: [Python, Go, TypeScript, Java, Rust, Dart, SQL, C]
+  mlAi: [PyTorch, TensorFlow, CNNs, Transformers, Diffusion Models, RL, LLM Fine-tuning, Object Detection]
+  cloudDevops: [AWS Lambda, EventBridge, API Gateway, GCP, Docker, GitHub Actions, New Relic]
+  frontend: [React, Flutter, Astro, Vue.js, Tailwind]
+  backend: [Nest.js, Node.js, GraphQL, REST, Auth0]
+  databases: [PostgreSQL, Redis, DynamoDB, Firebase]
